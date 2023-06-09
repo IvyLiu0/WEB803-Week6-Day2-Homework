@@ -1,36 +1,46 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import './App.css';
 
 class Counter extends React.Component {
-    state = {count:0}
+  state = { count: 0 };
 
-    increment = () => {
-        // this.setState({
-        //     count: this.state.count + 1
-        // });
-        this.props.dispatch({type: 'INCREMENT'});
-    }
+  increment = () => {
+    // this.setState({
+    //     count: this.state.count + 1
+    // });
+    this.props.dispatch({ type: "INCREMENT" });
+  };
 
-    decrement = () => {
-        // this.setState({
-        //     count: this.state.count - 1
-        // });
-        this.props.dispatch({type:'DECREMENT'});
-    }
+  decrement = () => {
+    // this.setState({
+    //     count: this.state.count - 1
+    // });
+    this.props.dispatch({ type: "DECREMENT" });
+  };
 
-    render() {
-        return (
-            <div>
-                <h2>Counter</h2>
-                <div>
-                    {/* <span>{this.state.count}</span> */}
-                    <span>{this.props.count}</span>
-                    <button onClick={this.decrement}>-</button>
-                    <button onClick={this.increment}>+</button>
-                </div>
-            </div>
-        )
-    }
+  reset = () => {
+    this.props.dispatch({ type: "RESET" });
+  };
+
+  render() {
+    return (
+      <div>
+        <h2 className="counterTitle">Counter</h2>
+        <div className="divCount">
+          {/* <span>{this.state.count}</span> */}
+          <span className="spanCount">{this.props.count}</span>
+          <button className="buttonDec" onClick={this.decrement}>
+            -
+          </button>
+          <button className="buttonInc" onClick={this.increment}>
+            +
+          </button>
+          <button onClick={this.reset}>reset</button>
+        </div>
+      </div>
+    );
+  }
 }
 
 function mapStateToProps(state){
